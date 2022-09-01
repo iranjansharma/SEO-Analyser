@@ -1,0 +1,22 @@
+{
+  "name": "seo-analyser",
+  "version": "1.0.0",
+  "description": "SEO Analyser For Chrome",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranjanshrma2003/SEO-Analyser.git"
+  },
+  "author": "Ranjan Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ranjanshrma2003/SEO-Analyser/issues"
+  },
+  "homepage": "https://github.com/ranjanshrma2003/SEO-Analyser#readme",
+  "dependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}
