@@ -8,11 +8,20 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/popup.css" />
+    <link rel="stylesheet" href="/popup.css" />
+    <style>
+      body {
+        width: 500px;
+        height: 600px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <div class="w-1/2 h-screen bg-green-500">
-      <h2 class="text-center">Welcome to my color picker</h2>
+    <div class="container">
+      <h2 class="text-3xl font-bold text-center capitalize">
+        Welcome to my color picker
+      </h2>
       <button class="changeColorBtn">Pick color</button>
       <div class="selectedColor">
         <span class="colorGrid"></span>
