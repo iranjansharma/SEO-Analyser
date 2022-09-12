@@ -11,7 +11,7 @@ btn.addEventListener('click', async () => {
     chrome.scripting.executeScript(
         {
             target: { tabId: tab.id },
-            function: pickColor,
+            function: runScript,
         },
         async (injectionResults) => {
             const [data] = injectionResults;
@@ -29,11 +29,9 @@ btn.addEventListener('click', async () => {
     );
 });
 
-async function pickColor() {
+async function runScript() {
     try {
-        // Picker
-        const eyeDropper = new EyeDropper();
-        return await eyeDropper.open();
+
     } catch (err) {
         console.error(err);
     }

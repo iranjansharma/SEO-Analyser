@@ -1,0 +1,22 @@
+body {
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #ffd100;
+  color: #0a0a0a;
+  text-shadow: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #787b82;
+  border: 2px solid #b8373700;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
