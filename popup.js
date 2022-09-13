@@ -7,6 +7,11 @@ const title = document.querySelector('.title');
 const desc = document.querySelector('.desc');
 const titleVal = document.querySelector('.titleVal');
 const descLength = document.querySelector('.descLength');
+const URL = document.querySelector('.URL');
+const Can_URL = document.getElementById("link");
+const robot = document.getElementById("robot");
+const map = document.getElementById("map");
+
 
 
 btn.addEventListener('click', async (h2) => {
@@ -39,6 +44,22 @@ btn.addEventListener('click', async (h2) => {
 
                 const descriptionLength = data.result.descLength;
                 descLength.innerHTML = descriptionLength;
+
+                const location = data.result.location;
+                URL.innerHTML = location;
+                URL.href = location;
+
+                Can_URL.innerHTML = location;
+                Can_URL.href = location;
+
+                const robo = robot.innerHTML = `${location}robots.txt`;
+                robot.href = robo;
+
+                let url = data.result.url;
+                let URI = `${url}/sitemap_index.xml`
+                map.innerHTML = URI;
+                map.href = URI;
+
                 try {
                     // await navigator.clipboard.writeText(color);
                 } catch (err) {
@@ -53,23 +74,30 @@ btn.addEventListener('click', async (h2) => {
 async function runScript() {
     try {
         let totalText = document.body.innerText;
-        // const titleOG = document.querySelector('[name=title]').content;
-        const title = document.title;
-        const description = document.querySelector('[name=description]').content;
-
         let cleanData = totalText.replace(/\s/g, '');
         let totalCount = cleanData.length;
 
+        const title = document.title;
         let titleLength = title.length;
-        let descLength;
 
+        const description = document.querySelector('[name=description]').content;
+        let descLength;
         if (description !== null) {
             descLength = description.length;
         } else {
             descLength = 1;
         }
 
-        return { totalCount, title, description, titleLength, descLength };
+        const location = window.location.href;
+
+        let url = window.location.origin;
+
+        let allLinks = document.images;
+
+        console.log(allLinks);
+
+
+        return { totalCount, title, description, titleLength, descLength, location, url };
     } catch (err) {
         console.error(err);
     }
