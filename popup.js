@@ -69,7 +69,7 @@ btn.addEventListener('click', async (h2) => {
                 const responseAll = data.result.statusCode;
                 response.innerHTML = `${responseAll} OK `;
 
-                let head1 = data.result.head1;
+                let head1 = data.result.firstHead;
                 h1.innerHTML = head1;
 
                 let head2 = data.result.h2Text;
@@ -136,6 +136,7 @@ async function runScript() {
             head1.push(h1Text[i]);
             // console.log(head1);
         }
+        console.log(head1);
 
 
 
@@ -144,15 +145,13 @@ async function runScript() {
         let h4Text = [...document.getElementsByTagName('h4')];
         let h5Text = [...document.getElementsByTagName('h5')];
         let h6Text = [...document.getElementsByTagName('h6')];
-        console.log(head1);
-        // console.log(h2Text);
         // console.log(h3Text);
         // console.log(h4Text);
         // console.log(h5Text);
         // console.log(h6Text);
 
 
-        return { totalCount, title, description, titleLength, descLength, location, url, allLinks, statusCode, h1Text, head1, h2Text, h3Text, h4Text, h5Text, h6Text };
+        return { totalCount, title, description, titleLength, descLength, location, url, allLinks, statusCode, h1Text, h2Text, h3Text, h4Text, h5Text, h6Text };
     } catch (err) {
         console.error(err);
     }
