@@ -33,7 +33,6 @@ btn.addEventListener('click', async (h2) => {
             // args: [h2]
         },
         async (injectionResults) => {
-            console.log(injectionResults);
             const [data] = injectionResults;
             if (data.result) {
                 const totalCount = data.result.totalCount;
