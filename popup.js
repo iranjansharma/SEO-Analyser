@@ -11,12 +11,12 @@ const Can_URL = document.getElementById("link");
 const robot = document.getElementById("robot");
 const map = document.getElementById("map");
 const response = document.getElementById("response");
-const h1 = document.querySelector('.h1');
-const h2 = document.querySelector('.h2');
-const h3 = document.querySelector('.h3');
-const h4 = document.querySelector('.h4');
-const h5 = document.querySelector('.h5');
-const h6 = document.querySelector('.h6');
+const h1 = document.getElementById('h1');
+const h2 = document.getElementById('h2');
+const h3 = document.getElementById('h3');
+const h4 = document.getElementById('h4');
+const h5 = document.getElementById('h5');
+const h6 = document.getElementById('h6');
 
 
 
@@ -34,6 +34,7 @@ btn.addEventListener('click', async (h2) => {
         },
         async (injectionResults) => {
             const [data] = injectionResults;
+            console.log(data);
             if (data.result) {
                 const totalCount = data.result.totalCount;
                 count.innerHTML = totalCount;
@@ -45,7 +46,7 @@ btn.addEventListener('click', async (h2) => {
                 title.innerHTML = Title;
 
                 const Description = data.result.description;
-                desc.innerHTML = Description;
+                desc.innerHTML = Description ? Description : "None";
 
                 const descriptionLength = data.result.descLength;
                 descLength.innerHTML = descriptionLength;
@@ -68,24 +69,60 @@ btn.addEventListener('click', async (h2) => {
                 const responseAll = data.result.statusCode;
                 response.innerHTML = `${responseAll} OK `;
 
-                let head1 = data.result.firstHead;
-                h1.innerHTML = head1;
+                let head1 = data.result.head1;
+                console.log(head1);
 
-                let head2 = data.result.h2Text;
-                h2.innerHTML = head2;
+                head1.map((element, index) => {
+                    const node = document.createElement("h1");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h1.appendChild(node);
+                });
+
+                let head2 = data.result.head2;
+                console.log(head2);
+
+                head2.map((element, index) => {
+                    const node = document.createElement("h2");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h1.appendChild(node);
+                });
+
 
                 let head3 = data.result.h3Text;
-                h3.innerHTML = head3;
+                head3.map((element, index) => {
+                    const node = document.createElement("h3");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h3.appendChild(node);
+                });
 
                 let head4 = data.result.h4Text;
-                h4.innerHTML = head4;
+                head4.map((element, index) => {
+                    const node = document.createElement("h4");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h4.appendChild(node);
+                });
+
 
                 let head5 = data.result.h5Text;
-                h5.innerHTML = head5;
+                head5.map((element, index) => {
+                    const node = document.createElement("h5");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h5.appendChild(node);
+                });
+
 
                 let head6 = data.result.h6Text;
-                h6.innerHTML = head6;
-
+                head6.map((element, index) => {
+                    const node = document.createElement("h6");
+                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    node.appendChild(textnode);
+                    h6.appendChild(node);
+                });
 
 
                 try {
@@ -108,10 +145,11 @@ async function runScript() {
         const title = document.title;
         let titleLength = title.length;
 
-        const description = document.querySelector('[name=description]').content;
+        const description = document.querySelector('[name=description]')?.content;
+
         let descLength;
-        if (description !== null) {
-            descLength = description.length;
+        if (description) {
+            descLength = description?.length;
         } else {
             descLength = 1;
         }
@@ -122,35 +160,54 @@ async function runScript() {
 
         let allLinks = [...document.images];
 
-        console.log(allLinks);
+        // console.log(allLinks);
 
         const response = await fetch(window.location.href);
         let statusCode = response.status;
 
         let h1Text = [...document.getElementsByTagName('h1')];
-
         const head1 = [];
 
         for (let i = 0; i < h1Text.length; i++) {
-            head1.push(h1Text[i]);
-            // console.log(head1);
-        }
-        console.log(head1);
-
+            head1.push(h1Text[i]?.innerText);
+        };
 
 
         let h2Text = [...document.getElementsByTagName('h2')];
+        let head2 = []
+        for (let i = 0; i < h2Text.length; i++) {
+            head2.push(h2Text[i]?.innerText);
+        }
+
         let h3Text = [...document.getElementsByTagName('h3')];
+        let head3 = []
+        for (let i = 0; i < h2Text.length; i++) {
+            head3.push(h2Text[i]?.innerText);
+        }
+
         let h4Text = [...document.getElementsByTagName('h4')];
+        let head4 = []
+        for (let i = 0; i < h2Text.length; i++) {
+            head4.push(h2Text[i]?.innerText);
+        }
+
         let h5Text = [...document.getElementsByTagName('h5')];
+        let head5 = []
+        for (let i = 0; i < h2Text.length; i++) {
+            head2.push(h2Text[i]?.innerText);
+        }
+
         let h6Text = [...document.getElementsByTagName('h6')];
-        // console.log(h3Text);
-        // console.log(h4Text);
+        let head6 = []
+        for (let i = 0; i < h2Text.length; i++) {
+            head2.push(h2Text[i]?.innerText);
+        }
+
         // console.log(h5Text);
         // console.log(h6Text);
 
 
-        return { totalCount, title, description, titleLength, descLength, location, url, allLinks, statusCode, h1Text, h2Text, h3Text, h4Text, h5Text, h6Text };
+        return { totalCount, title, description, titleLength, descLength, location, url, allLinks, head1, statusCode, head2, head3, head4, head5, head6 };
     } catch (err) {
         console.error(err);
     }
