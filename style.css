@@ -26,6 +26,11 @@ h6 {
   font-size: 8px;
 }
 
+.anchors {
+  color: crimson;
+  font-size: 16px;
+}
+
 ::selection {
   background-color: #ffd100;
   color: #0a0a0a;

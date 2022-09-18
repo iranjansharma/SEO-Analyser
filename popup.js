@@ -17,6 +17,7 @@ const h3 = document.getElementById('h3');
 const h4 = document.getElementById('h4');
 const h5 = document.getElementById('h5');
 const h6 = document.getElementById('h6');
+const img = document.getElementById('img');
 
 
 
@@ -46,7 +47,7 @@ btn.addEventListener('click', async (h2) => {
                 title.innerHTML = Title;
 
                 const Description = data.result.description;
-                desc.innerHTML = Description ? Description : "None";
+                desc.innerHTML = Description ? Description : "This Website Has No Description";
 
                 const descriptionLength = data.result.descLength;
                 descLength.innerHTML = descriptionLength;
@@ -74,8 +75,8 @@ btn.addEventListener('click', async (h2) => {
 
                 head1.map((element, index) => {
                     const node = document.createElement("h1");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
-                    node.appendChild(textnode);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H1`);
+                    node.appendChild(textnode, x);
                     h1.appendChild(node);
                 });
 
@@ -84,46 +85,55 @@ btn.addEventListener('click', async (h2) => {
 
                 head2.map((element, index) => {
                     const node = document.createElement("h2");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H2`);
                     node.appendChild(textnode);
                     h1.appendChild(node);
                 });
 
 
-                let head3 = data.result.h3Text;
+                let head3 = data.result.head3;
                 head3.map((element, index) => {
                     const node = document.createElement("h3");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H3`);
                     node.appendChild(textnode);
                     h3.appendChild(node);
                 });
 
-                let head4 = data.result.h4Text;
+                let head4 = data.result.head4;
                 head4.map((element, index) => {
                     const node = document.createElement("h4");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H4`);
                     node.appendChild(textnode);
                     h4.appendChild(node);
                 });
 
 
-                let head5 = data.result.h5Text;
+                let head5 = data.result.head5;
                 head5.map((element, index) => {
                     const node = document.createElement("h5");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H5`);
                     node.appendChild(textnode);
                     h5.appendChild(node);
                 });
 
 
-                let head6 = data.result.h6Text;
+                let head6 = data.result.head6;
                 head6.map((element, index) => {
                     const node = document.createElement("h6");
-                    const textnode = document.createTextNode(`${index} : ${element}`);
+                    const textnode = document.createTextNode(`${index} : ${element}  ,--H6`);
                     node.appendChild(textnode);
                     h6.appendChild(node);
                 });
 
+                let imgLink = data.result.allImgLinks;
+                imgLink.map((element, index) => {
+                    const node = document.createElement("a");
+                    const textnode = document.createTextNode(`${index} : ${element}    `);
+                    node.href = `${element}`;
+                    node.setAttribute("class", "anchors");
+                    node.appendChild(textnode);
+                    img.appendChild(node);
+                });
 
                 try {
                     // await navigator.clipboard.writeText(color);
@@ -157,10 +167,6 @@ async function runScript() {
         const location = window.location.href;
 
         let url = window.location.origin;
-
-        let allLinks = [...document.images];
-
-        // console.log(allLinks);
 
         const response = await fetch(window.location.href);
         let statusCode = response.status;
@@ -203,11 +209,15 @@ async function runScript() {
             head2.push(h2Text[i]?.innerText);
         }
 
-        // console.log(h5Text);
-        // console.log(h6Text);
+        let imgLinks = [...document.images];
+        let allImgLinks = []
 
+        for (let i = 0; i < imgLinks.length; i++) {
+            allImgLinks.push(imgLinks[i]?.currentSrc);
+        }
+        console.log(allImgLinks);
 
-        return { totalCount, title, description, titleLength, descLength, location, url, allLinks, head1, statusCode, head2, head3, head4, head5, head6 };
+        return { totalCount, title, description, titleLength, descLength, location, url, allImgLinks, head1, statusCode, head2, head3, head4, head5, head6 };
     } catch (err) {
         console.error(err);
     }
