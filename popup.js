@@ -76,7 +76,7 @@ btn.addEventListener('click', async (h2) => {
                 head1.map((element, index) => {
                     const node = document.createElement("h1");
                     const textnode = document.createTextNode(`${index} : ${element}  ,--H1`);
-                    node.appendChild(textnode, x);
+                    node.appendChild(textnode);
                     h1.appendChild(node);
                 });
 
