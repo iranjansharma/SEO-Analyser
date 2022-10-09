@@ -45,11 +45,8 @@ Software Used:
 
 9. Checking the number of H1, H2, H3, H4, H5, H6 and paragraphs with its length.
 
+10. With the visual nature of the web your Meta Tag Image is the most valuable graphic content you can create to encourage users to click and visit your website.
 
-    10. With the visual nature of the web your Meta Tag Image is  	the most valuable graphic content you can create to encourage users to click and visit your website.
+11. Checking images present or not.
 
-
-    11. Checking images present or not.
-
-
-    12. Checking Name images descriptively & descriptive alt text of images.
+12. Checking Name images descriptively & descriptive alt text of images.
