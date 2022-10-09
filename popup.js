@@ -31,7 +31,6 @@ btn.addEventListener('click', async (h2) => {
         {
             target: { tabId: tab.id },
             function: runScript,
-            // args: [h2]
         },
         async (injectionResults) => {
             const [data] = injectionResults;
@@ -39,16 +38,12 @@ btn.addEventListener('click', async (h2) => {
             if (data.result) {
                 const totalCount = data.result.totalCount;
                 count.innerHTML = totalCount;
-                // colorGrid.style.backgroundColor = color;
                 const metaTitle = data.result.titleLength;
                 titleVal.innerHTML = metaTitle;
-                // colorValue.innerText = color;
                 const Title = data.result.title;
                 title.innerHTML = Title;
-
                 const Description = data.result.description;
-                desc.innerHTML = Description ? Description : "This Website Has No Description";
-
+                desc.innerHTML = Description ? Description : "This Website Has No Meta Description";
                 const descriptionLength = data.result.descLength;
                 descLength.innerHTML = descriptionLength;
 
@@ -134,12 +129,6 @@ btn.addEventListener('click', async (h2) => {
                     node.appendChild(textnode);
                     img.appendChild(node);
                 });
-
-                try {
-                    // await navigator.clipboard.writeText(color);
-                } catch (err) {
-                    console.error(err);
-                }
             }
         }
     );
