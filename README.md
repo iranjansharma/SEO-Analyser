@@ -1,4 +1,4 @@
-## **On-Page SEO Analyzer: **(On-Page SEO Auditing)
+## On-Page SEO Analyzer: (On-Page SEO Auditing)
 
 It is a Chrome Browser Based Extension. It provides flexibility to Blog writer, technical writer to optimize their content according to the Search Engine **(Google)** algorithm, it helps content creators to analyze and optimize content on different Parameters provided by search engine to rank very fast on the internet.
 
